@@ -15,12 +15,18 @@
                 <figcaption>Votre avenir, Notre réussite</figcaption>
             </figure>
 
+            {% for user in users %}
             <nav>
                 <a href="{{ path('app_home') }}">Accueil</a>
                 <a href="#">Nos formations</a>
-                <a href="{{ path('app_login') }}">Connexion</a>
-                <a href="{{ path('app_register') }}">Inscription</a>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a href="{{ path('app_logout')}}">Déconnexion !</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}">Connexion</a>
+                    <a href="{{ path('app_register') }}">Inscription</a>
+                {% endif %}
             </nav>
+            {% endfor %}
 
         </header>
     {% endblock %}

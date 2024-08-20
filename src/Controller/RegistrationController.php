@@ -66,7 +66,7 @@ class RegistrationController extends AbstractController
                     ], UrlGeneratorInterface::ABSOLUTE_URL)
                 ]
             );
-            return $this->render('registration/wainting_page.html.twig', [
+            return $this->render('registration/waiting.html.twig', [
                 'user'=>$user
             ]);
         }
@@ -79,7 +79,7 @@ class RegistrationController extends AbstractController
     #[Route('/wait-validation', name:'app_wait_validation')]
     public function waitingValidation():Response
     {
-        return $this->render('registration/wainting_page.html.twig');
+        return $this->render('registration/waiting.html.twig');
     }
 
     #[Route('/verify-email/{token}', name:'app_verify_email')]
