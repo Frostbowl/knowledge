@@ -2,11 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ asset('styles/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('styles/header.css')}}">
 </head>
-<body class="wrapper">
+<body>
 
     {% block header %}
-        <header class="header">
+        <header>
 
             <figure>
                 <img src="{{ asset('img/logo.png') }}" alt="logo knowledge">
@@ -15,6 +17,9 @@
 
             <nav>
                 <a href="#">Accueil</a>
+                <a href="#">Nos formations</a>
+                <a href="#">Connexion</a>
+                <a href="#">Inscription</a>
             </nav>
 
         </header>
