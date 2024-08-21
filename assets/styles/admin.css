@@ -1,0 +1,26 @@
+.admin{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-around;
+
+}
+
+.admin a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0074c7;
+    color: #f1f8fc;
+    border: 1px solid #00497c ;
+    border-radius: 5px;
+    height: 4rem;
+    width: 19rem;
+    margin-top: 4rem;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.admin a:hover{
+    cursor: pointer;
+}
