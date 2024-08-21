@@ -1,9 +1,16 @@
-<h1>Hi! Please confirm your email!</h1>
+{% block body %}
 
-<p>
-    Please confirm your email address by clicking the following link: <br><br>
-</p>
+{% include 'header.html.twig' %}
 
-<p>
-    Cheers!
-</p>
+<main>
+
+    <h1>Vous y êtes presque !</h1>
+    <p>Pour vous connecter</p>
+    <P>Valider d'abbord le lien envoyé à l'adresse : {{ user.email }}</p>
+    <p>à très bientôt, avec knowledge Learning</p>
+
+</main>
+
+{% include 'footer.html.twig' %}
+
+{% endblock %}

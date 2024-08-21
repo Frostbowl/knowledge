@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ asset('styles/app.css')}}">
     <link rel="stylesheet" href="{{ asset('styles/header.css')}}">
+    <link rel="stylesheet" href="{{ asset('styles/form.css')}}">
 </head>
 <body>
 
@@ -15,7 +16,12 @@
                 <figcaption>Votre avenir, Notre réussite</figcaption>
             </figure>
 
-            {% for user in users %}
+            <article>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <h2>Bienvenue {{app.user.name}} !</h2>
+                {% endif %}
+            </article>
+
             <nav>
                 <a href="{{ path('app_home') }}">Accueil</a>
                 <a href="#">Nos formations</a>
@@ -26,7 +32,6 @@
                     <a href="{{ path('app_register') }}">Inscription</a>
                 {% endif %}
             </nav>
-            {% endfor %}
 
         </header>
     {% endblock %}

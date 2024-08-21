@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Service\SendMailService;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -66,6 +67,7 @@ class RegistrationController extends AbstractController
                     ], UrlGeneratorInterface::ABSOLUTE_URL)
                 ]
             );
+            
             return $this->render('registration/waiting.html.twig', [
                 'user'=>$user
             ]);
@@ -77,8 +79,9 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/wait-validation', name:'app_wait_validation')]
-    public function waitingValidation():Response
+    public function waitingValidation(): Response
     {
+
         return $this->render('registration/waiting.html.twig');
     }
 

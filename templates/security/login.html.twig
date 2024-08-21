@@ -1,31 +1,30 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Log in!{% endblock %}
-
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+    {% include 'header.html.twig' %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    <main class="login">
+        <h1>Connexion</h1>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+        <section class="registration">
+            <form method="post" class="form-group">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+                <label for="inputEmail">Adresse email:</label>
+                <input type="text" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="username" required autofocus>
+                <label for="inputPassword">Mot de passe:</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                
+                <button class="btn" type="submit">Se connecter</button>
+            </form>
+            <p>Pas encore inscrit ?</p>
+            <button><a href="{{ path('app_register') }}">Créer un compte</a></button>
+        </section>
+    </main>
+
+    {% include 'footer.html.twig' %}
 {% endblock %}
+
