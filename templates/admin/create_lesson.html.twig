@@ -1,0 +1,21 @@
+{% block body %}
+
+    {% include 'header.html.twig' %}
+
+    <main>
+
+        <h1>Créer une nouvelle leçon</h1>
+
+        {{ form_start(form) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.videoFile) }}
+            {{ form_row(form.prix) }}
+            {{ form_row(form.cursus) }}
+            <button type="submit">Créer</button>
+        {{ form_end(form) }}
+        
+    </main>
+
+    {% include 'footer.html.twig' %}
+{% endblock %}

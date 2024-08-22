@@ -24,13 +24,15 @@ class Theme
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updated_at = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(name: 'created_by', referencedColumnName:'id')]
     private ?User $created_by = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(name:'updated_by', referencedColumnName:'id', nullable:true)]
     private ?User $updated_by = null;
 
-    #[ORM\OneToMany(mappedBy: 'theme', targetEntity: Cursus::class)]
+    #[ORM\OneToMany(mappedBy: 'Theme', targetEntity: Cursus::class)]
     private Collection $cursuses;
 
     public function __construct()

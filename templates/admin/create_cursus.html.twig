@@ -1,0 +1,19 @@
+{% block body %}
+
+    {% include 'header.html.twig' %}
+
+    <main>
+
+        <h1>Créer un nouveau cursus</h1>
+
+        {{ form_start(form) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.prix) }}
+            {{ form_row(form.theme) }}
+            <button type="submit">Créer</button>
+        {{ form_end(form) }}
+        
+    </main>
+
+    {% include 'footer.html.twig' %}
+{% endblock %}

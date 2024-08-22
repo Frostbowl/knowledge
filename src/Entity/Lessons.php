@@ -38,10 +38,10 @@ class Lessons
     #[ORM\JoinColumn(name:'updated_by', referencedColumnName:'id', nullable:true)]
     private ?User $updated_by = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'datetime_immutable')]
     private ?\DateTimeImmutable $created_at = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'datetime_immutable', nullable:true)]
     private ?\DateTimeImmutable $updated_at = null;
 
     public function __construct()
@@ -164,5 +164,22 @@ class Lessons
         $this->updated_at = $updated_at;
 
         return $this;
+    }
+
+    #[ORM\PrePersist]
+    public function onPrePersist(): void
+    {
+        if ($this->created_at === null) {
+            $this->created_at = new \DateTimeImmutable();
+        }
+        if ($this->updated_at === null) {
+            $this->updated_at = new \DateTimeImmutable();
+        }
+    }
+
+    #[ORM\PreUpdate]
+    public function onPreUpdate(): void
+    {
+        $this->updated_at = new \DateTimeImmutable();
     }
 }
