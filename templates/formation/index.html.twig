@@ -1,0 +1,17 @@
+{% block body %}
+
+    {% include 'header.html.twig' %}
+
+    <main class="home">
+
+        <h1>Nos formations</h1>
+        {% for theme in themes %}
+            <article>
+                {{ theme.name }}
+                <a>Consulter</a>
+            </article>    
+        {% endfor %}    
+    </main>
+
+    {% include 'footer.html.twig' %}
+{% endblock %}

@@ -25,7 +25,7 @@
 
             <nav>
                 <a href="{{ path('app_home') }}">Accueil</a>
-                <a href="#">Nos formations</a>
+                <a href="{{ path('app_formation')}}">Nos formations</a>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <a href="{{ path('app_logout')}}">Déconnexion !</a>
                 {% else %}
