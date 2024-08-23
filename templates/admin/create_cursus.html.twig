@@ -6,12 +6,26 @@
 
         <h1>Créer un nouveau cursus</h1>
 
-        {{ form_start(form) }}
-            {{ form_row(form.name) }}
-            {{ form_row(form.prix) }}
-            {{ form_row(form.theme) }}
-            <button type="submit">Créer</button>
-        {{ form_end(form) }}
+        <section class="registration">
+            {{ form_start(form) }}
+                    <div class="form-group">
+                        {{ form_label(form.name, "Nom du nouveau cursus") }}
+                        {{ form_widget(form.name)}}
+                        {{ form_errors(form.name)}}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.prix, "Prix du nouveau thème") }}
+                        {{ form_widget(form.prix)}}
+                        {{ form_errors(form.prix)}}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.theme, "Nom du nouveau thème") }}
+                        {{ form_widget(form.theme)}}
+                        {{ form_errors(form.theme)}}
+                    </div>
+                <button type="submit">Créer</button>
+            {{ form_end(form) }}
+        </section>
         
     </main>
 

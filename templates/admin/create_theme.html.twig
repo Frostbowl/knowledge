@@ -6,14 +6,16 @@
 
         <h1>Créer un nouveau thème</h1>
 
-        {{ form_start(form) }}
-                <div class="form-group">
-                    {{ form_label(form.name, "Nom du nouveau thème") }}
-                    {{ form_widget(form.name)}}
-                    {{ form_errors(form.name)}}
-                </div>
-            <button class="btn">Créer</button>
-        {{ form_end(form) }}
+        <section class="registration">
+            {{ form_start(form) }}
+                    <div class="form-group">
+                        {{ form_label(form.name, "Nom du nouveau thème") }}
+                        {{ form_widget(form.name)}}
+                        {{ form_errors(form.name)}}
+                    </div>
+                <button class="btn">Créer</button>
+            {{ form_end(form) }}
+        </section>
         
     </main>
 

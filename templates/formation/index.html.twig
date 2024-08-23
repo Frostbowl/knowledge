@@ -2,15 +2,19 @@
 
     {% include 'header.html.twig' %}
 
-    <main class="home">
+    <main>
 
         <h1>Nos formations</h1>
+        <section class="formation">
         {% for theme in themes %}
             <article>
-                {{ theme.name }}
-                <a>Consulter</a>
+                <p>{{ theme.name }}</p>
+                <button>
+                    <a href="{{ path('app_theme_cursus', {'id': theme.id}) }}">Consulter</a>
+                </button>
             </article>    
-        {% endfor %}    
+        {% endfor %} 
+        </section>   
     </main>
 
     {% include 'footer.html.twig' %}

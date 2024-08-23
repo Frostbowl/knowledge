@@ -6,14 +6,36 @@
 
         <h1>Créer une nouvelle leçon</h1>
 
+        <section class="registration">
         {{ form_start(form) }}
-            {{ form_row(form.name) }}
-            {{ form_row(form.description) }}
-            {{ form_row(form.videoFile) }}
-            {{ form_row(form.prix) }}
-            {{ form_row(form.cursus) }}
+            <div class="form-group">
+                {{ form_label(form.name, "Nom de la nouvelle leçon")}}
+                {{ form_widget(form.name)}}
+                {{ form_errors(form.name)}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.description, "Ecrivez la nouvelle leçon:")}}
+                {{ form_widget(form.description)}}
+                {{ form_errors(form.description)}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.videoFile, "Vidéo de la leçon")}}
+                {{ form_widget(form.videoFile)}}
+                {{ form_errors(form.videoFile)}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.prix, "Prix de la nouvelle leçon")}}
+                {{ form_widget(form.prix)}}
+                {{ form_errors(form.prix)}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.cursus, "Cursus de la nouvelle leçon")}}
+                {{ form_widget(form.cursus)}}
+                {{ form_errors(form.cursus)}}
+            </div>
             <button type="submit">Créer</button>
         {{ form_end(form) }}
+        </section>
         
     </main>
 

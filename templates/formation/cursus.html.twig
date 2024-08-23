@@ -1,0 +1,32 @@
+{% block body %}
+
+    {% include 'header.html.twig' %}
+
+    <main>
+
+        <h1>Cursus pour le thème: {{ theme.name }}</h1>
+        <section class="formation">
+        {% for cursus in cursus %}
+            <article>
+                <p>{{ cursus.name }}</p>
+                <p>Prix: {{cursus.prix}} €</p>
+                <div>
+                    <button>
+                        <a href="{{ path('app_cursus_lesson', { 'themeId': theme.id, 'cursusId': cursus.id }) }}">
+                            Voir les leçons
+                        </a>
+                    </button>
+                    <button>
+                        <a>
+                            Acheter
+                        </a>
+                    </button>
+                </div>
+            </article>
+        {% endfor %}
+        </section>
+
+    </main>
+
+    {% include 'footer.html.twig' %}
+{% endblock %}

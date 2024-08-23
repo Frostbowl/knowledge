@@ -1,0 +1,21 @@
+{% block body %}
+    {% include 'header.html.twig' %}
+
+    <main>
+        <h1>{{ lesson.name }}</h1><br>
+        <section class="lesson-content">
+            <video controls>
+                <source src="{{ asset('uploads/videos/' ~ lesson.videoFile) }}" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture vidéo.
+            </video>
+            <p>{{ lesson.description }}</p>
+        </section>
+            <button>
+                <a href="{{ path('app_theme_cursus', { 'id': lesson.cursus.theme.id }) }}">
+                    Retour au Cursus
+                </a>
+            </button>
+    </main>
+
+    {% include 'footer.html.twig' %}
+{% endblock %}

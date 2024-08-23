@@ -1,0 +1,42 @@
+.formation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.formation article{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    justify-content: center;
+    width: 35%;
+    height:13rem;
+    border: 2px solid #384050;
+    border-radius: 15px;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    background-color: #f1f8fc;
+}
+
+.formation p{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00497c;
+}
+
+.lesson-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+}
+
+video{
+    width: 60%;
+}
