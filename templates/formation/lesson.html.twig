@@ -10,10 +10,19 @@
             <article>
                 <p>{{ lesson.name }}</p>
                 <p>Prix: {{lesson.prix}}€</p>
-                <button>
-                    <a href="{{ path('app_lesson', {'themeId': cursus.theme.id, 'cursusId': cursus.id, 'lessonId': lesson.id}) }}">
-                        Consulter
-                        </a>
+                {% if is_granted('ROLE_USER') %}
+                    {% if userHasPurchasedLesson[lesson.id] %}
+                        <button>
+                            <a href="{{ path('app_lesson', { themeId: cursus.theme.id, cursusId: cursus.id, lessonId: lesson.id }) }}">
+                                Consulte
+                            </a>
+                        </button>
+                    {% else %}
+                        <a href="{{ path('app_lesson_success', { themeId: cursus.theme.id, cursusId: cursus.id, lessonId: lesson.id }) }}">Acheter cette leçon</a>
+                    {% endif %}
+                {% else %}
+                    <p>Vous devez être connecté pour acheter cette leçon.</p>
+                {% endif %}
             </article>
         {% endfor %}
         </section>
