@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\LessonsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: LessonsRepository::class)]
 class Lessons
@@ -44,10 +46,16 @@ class Lessons
     #[ORM\Column(type: 'datetime_immutable', nullable:true)]
     private ?\DateTimeImmutable $updated_at = null;
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy:'purchasedLessons')]
+    private Collection $users;
+
     public function __construct()
     {
+        $this->users = new ArrayCollection();
         $this->created_at = new \DateTimeImmutable();
     }
+
+    
 
 ////////////////////////////////////////////////////////////////////////Getters & Setters//////////////////////////////////////////////////////////
 
@@ -163,6 +171,31 @@ class Lessons
     {
         $this->updated_at = $updated_at;
 
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if(!$this->users->contains($user)){
+            $this->users->add($user);
+            $user->addPurchasedLesson($this);
+        }
+        return $this;
+    }
+
+    public function removeUser(User $user):static
+    {
+        if(!$this->users->removeElement($user)){
+            $user->getPurchasedLessons()->removeElement($this);
+        }
         return $this;
     }
 
