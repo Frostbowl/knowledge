@@ -73,6 +73,13 @@ class FormationController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        $user = $this->getUser();
+
+        if (!$user->getIsVerified()){
+            $this->addFlash('error', 'Vous devez activer votre compte pour effectuer un achat');
+            return $this->redirectToRoute('app_login');
+        }
+
         $lineItems = [[
             'price_data'=>[
                 'currency'=>'eur',
@@ -139,6 +146,13 @@ class FormationController extends AbstractController
     public function lessonDetail(int $themeId, int $cursusId, int $lessonId, LessonsRepository $lessonsRepository, StripeService $stripeService): Response
     {
         $lesson = $lessonsRepository->find($lessonId);
+
+        $user = $this->getUser();
+
+        if (!$user->getIsVerified()){
+            $this->addFlash('error', 'Vous devez activer votre compte pour effectuer un achat');
+            return $this->redirectToRoute('app_login');
+        }
 
         if (!$this->userHasPurchasedLesson($lesson)){
             $lineItems = [[
