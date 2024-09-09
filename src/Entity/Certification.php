@@ -16,10 +16,12 @@ class Certification
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'certifications')]
     private ?User $User = null;
 
-    #[ORM\ManyToOne(targetEntity: Cursus::class, nullable:true)]
+    #[ORM\ManyToOne(targetEntity: Cursus::class)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Cursus $cursus = null;
 
-    #[ORM\ManyToOne(targetEntity: Lessons::class, nullable:true)]
+    #[ORM\ManyToOne(targetEntity: Lessons::class)]
+    #[ORM\JoinColumn(nullable:true)]
     private ?Lessons $lesson = null;
 
     #[ORM\Column(type:'datetime')]
